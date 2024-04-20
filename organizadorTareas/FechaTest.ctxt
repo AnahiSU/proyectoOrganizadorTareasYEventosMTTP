@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=FechaTest
+comment0.text=\r\n\ Clase\ de\ prueba\ para\ la\ clase\ Fecha.\r\n
+comment1.params=
+comment1.target=FechaTest()
+comment1.text=\r\n\ Constructor\ de\ la\ clase\ de\ prueba.\r\n
+comment2.params=
+comment2.target=void\ setUp()
+comment2.text=\r\n\ M\u00E9todo\ que\ se\ ejecuta\ antes\ de\ cada\ prueba.\r\n
+comment3.params=
+comment3.target=void\ tearDown()
+comment3.text=\r\n\ M\u00E9todo\ que\ se\ ejecuta\ despu\u00E9s\ de\ cada\ prueba.\r\n
+comment4.params=
+comment4.target=void\ toStringTest()
+comment4.text=\r\n\ Prueba\ el\ m\u00E9todo\ toString\ para\ la\ fecha.\r\n
+comment5.params=
+comment5.target=void\ toStringSerializadoTest()
+comment5.text=\r\n\ Prueba\ el\ m\u00E9todo\ toStringSerializado\ para\ la\ fecha.\r\n
+numComments=6

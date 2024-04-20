@@ -1,0 +1,31 @@
+#BlueJ class context
+comment0.target=ArbolBB
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ ArbolBB\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=ArbolBB()
+comment10.params=dato
+comment10.target=java.lang.Comparable\ eliminar(java.lang.Comparable)
+comment10.text=public\ T\ deleteNoMatterLeaf(T\ data){\r\n\ \ \ \ T\ res\ \=\ null;\r\n\ \ \ \ if(\!isEmpty()){\r\n\ \ \ \ if(data.compareTo(root)<0){\r\n\ \ \ \ res\ \=\ left.deleteNoMatterLeaf(data);\r\n\ \ \ \ }else{\r\n\ \ \ \ if(data.compareTo(root)>0){\r\n\ \ \ \ res\ \=\ right.deleteNoMatterLeaf(data);\r\n\ \ \ \ }else{\r\n\ \ \ \ //\ el\ dato\ es\ igual\ a\ la\ root\r\n\ \ \ \ if(isLeaf()){\r\n\ \ \ \ res\ \=\ root;\r\n\ \ \ \ left\ \=\ null;\r\n\ \ \ \ right\ \=\ null;\r\n\ \ \ \ root\ \=\ null;\r\n\ \ \ \ }else{\r\n\ \ \ \ if(left.isEmpty()\ &&\ \!right.isEmpty()){\r\n\ \ \ \ res\ \=\ root;\r\n\ \ \ \ root\ \=\ right.root;\r\n\ \ \ \ right\ \=\ right.right;\r\n\ \ \ \ left\ \=\ right.left;\r\n\ \ \ \ }else{\r\n\ \ \ \ if(\!left.isEmpty()\ &&\ right.isEmpty()){\r\n\ \ \ \ res\ \=\ root;\r\n\ \ \ \ root\ \=\ left.root;\r\n\ \ \ \ right\ \=\ left.right;\r\n\ \ \ \ left\ \=\ left.left;\r\n\ \ \ \ }else{\r\n\ \ \ \ res\ \=\ root;\r\n\ \ \ \ ArbolBB<T>\ descL\ \=\ descLeft();\r\n\ \ \ \ root\ \=\ descL.root;\r\n\ \ \ \ descL.root\ \=\ null;\r\n\ \ \ \ }\r\n\ \ \ \ }\r\n\ \ \ \ }\r\n\ \ \ \ }\r\n\ \ \ \ }\r\n\ \ \ \ }\r\n\ \ \ \ return\ res;\r\n}
+comment11.params=
+comment11.target=void\ deleteAll()
+comment12.params=
+comment12.target=int\ estadoroot()
+comment13.params=
+comment13.target=ArbolBB\ descIzq()
+comment2.params=data
+comment2.target=ArbolBB(java.lang.Comparable)
+comment3.params=
+comment3.target=boolean\ isEmpty()
+comment4.params=data
+comment4.target=void\ insertData(java.lang.Comparable)
+comment5.params=data
+comment5.target=java.lang.Comparable\ delete(java.lang.Comparable)
+comment6.params=
+comment6.target=boolean\ isLeaf()
+comment7.params=
+comment7.target=ArbolBB\ descLeft()
+comment8.params=
+comment8.target=ArbolBB\ descRight()
+comment9.params=
+comment9.target=estDatos.estDatLin.ListaSE\ inOrder()
+numComments=14

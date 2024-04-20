@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=ArbolPesado
+comment1.params=
+comment1.target=ArbolPesado()
+comment2.params=data
+comment2.target=ArbolPesado(java.lang.Comparable)
+comment3.params=
+comment3.target=boolean\ isEmpty()
+comment4.params=data
+comment4.target=void\ insert(java.lang.Comparable)
+comment5.params=cola\ data
+comment5.target=void\ insert(estDatos.estDatLin.Cola,\ java.lang.Comparable)
+comment6.params=data
+comment6.target=void\ reubicar(java.lang.Comparable)
+comment7.params=data\ way
+comment7.target=void\ reubicar(java.lang.Comparable,\ estDatos.estDatLin.Pila)
+comment8.params=data
+comment8.target=estDatos.estDatLin.Pila\ getWay(java.lang.Comparable)
+comment9.params=data\ way
+comment9.target=void\ getWay(java.lang.Comparable,\ estDatos.estDatLin.Pila)
+numComments=10

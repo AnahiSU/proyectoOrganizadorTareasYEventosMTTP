@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Fecha
+comment0.text=\r\n\ La\ clase\ Fecha\ representa\ una\ fecha\ con\ d\u00EDa,\ mes\ y\ a\u00F1o.\r\n
+comment1.params=d\ m\ a
+comment1.target=Fecha(int,\ int,\ int)
+comment1.text=\r\n\ Constructor\ de\ la\ clase\ Fecha.\r\n\r\n\ @param\ d\ D\u00EDa.\r\n\ @param\ m\ Mes.\r\n\ @param\ a\ A\u00F1o.\r\n
+comment2.params=
+comment2.target=int\ getD()
+comment2.text=\r\n\ Obtiene\ el\ d\u00EDa.\r\n\r\n\ @return\ El\ d\u00EDa.\r\n
+comment3.params=
+comment3.target=int\ getM()
+comment3.text=\r\n\ Obtiene\ el\ mes.\r\n\r\n\ @return\ El\ mes.\r\n
+comment4.params=
+comment4.target=int\ getA()
+comment4.text=\r\n\ Obtiene\ el\ a\u00F1o.\r\n\r\n\ @return\ El\ a\u00F1o.\r\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ Devuelve\ una\ representaci\u00F3n\ en\ cadena\ de\ la\ fecha\ en\ formato\ "d/m/a".\r\n\r\n\ @return\ La\ representaci\u00F3n\ en\ cadena\ de\ la\ fecha.\r\n
+comment6.params=
+comment6.target=java.lang.String\ toStringSerializado()
+comment6.text=\r\n\ Devuelve\ una\ representaci\u00F3n\ en\ cadena\ de\ la\ fecha\ en\ formato\ serializado\ "ddmmaa".\r\n\ Se\ asume\ que\ los\ valores\ tienen\ siempre\ dos\ d\u00EDgitos.\r\n\r\n\ @return\ La\ representaci\u00F3n\ serializada\ de\ la\ fecha.\r\n
+numComments=7

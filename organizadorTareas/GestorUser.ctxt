@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=GestorUser
+comment1.params=
+comment1.target=GestorUser()
+comment2.params=user
+comment2.target=void\ registrarUsuario(Usuario)
+comment3.params=usuario
+comment3.target=void\ eliminarUsuario(Usuario)
+comment4.params=directorio
+comment4.target=void\ borrarDirectorio(java.io.File)
+comment5.params=str
+comment5.target=Usuario\ buscarUsuario(java.lang.String)
+numComments=6

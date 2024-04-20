@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Hora
+comment0.text=\r\n\ La\ clase\ Hora\ representa\ una\ hora\ con\ horas\ y\ minutos.\r\n
+comment1.params=h\ m
+comment1.target=Hora(int,\ int)
+comment1.text=\r\n\ Constructor\ de\ la\ clase\ Hora.\r\n\r\n\ @param\ h\ Horas.\r\n\ @param\ m\ Minutos.\r\n
+comment2.params=
+comment2.target=void\ cambiarHora()
+comment2.text=\r\n\ Establece\ las\ horas\ y\ los\ minutos\ mediante\ la\ entrada\ del\ usuario.\r\n
+comment3.params=
+comment3.target=int\ getHora()
+comment3.text=\r\n\ Obtiene\ las\ horas.\r\n\r\n\ @return\ Las\ horas.\r\n
+comment4.params=
+comment4.target=int\ getMin()
+comment4.text=\r\n\ Obtiene\ los\ minutos.\r\n\r\n\ @return\ Los\ minutos.\r\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ Devuelve\ una\ representaci\u00F3n\ en\ cadena\ de\ la\ hora\ en\ formato\ "hh\:mm".\r\n\r\n\ @return\ La\ representaci\u00F3n\ en\ cadena\ de\ la\ hora.\r\n
+comment6.params=
+comment6.target=java.lang.String\ toStringSerializado()
+comment6.text=\r\n\ Devuelve\ una\ representaci\u00F3n\ en\ cadena\ de\ la\ hora\ en\ formato\ serializado\ "hhmm".\r\n\r\n\ @return\ La\ representaci\u00F3n\ serializada\ de\ la\ hora.\r\n
+numComments=7

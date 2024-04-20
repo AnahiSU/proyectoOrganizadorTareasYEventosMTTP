@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Usuario
+comment1.params=name\ contra
+comment1.target=Usuario(java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getContra()
+comment3.params=
+comment3.target=java.lang.String\ getNombre()
+comment4.params=
+comment4.target=java.nio.file.Path\ getDirAs()
+comment5.params=
+comment5.target=java.lang.String\ toStringDirAs()
+numComments=6

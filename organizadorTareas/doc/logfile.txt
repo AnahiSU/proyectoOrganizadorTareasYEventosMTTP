@@ -1,0 +1,31 @@
+Class documentation
+<---- javadoc command: ---->
+C:\Program Files\BlueJ\jdk\bin\javadoc.exe
+-author
+-version
+-nodeprecated
+-package
+-Xdoclint:none
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+17
+-classpath
+C:\Program Files\BlueJ\lib\bluejcore.jar;C:\Program Files\BlueJ\lib\junit-jupiter-5.5.2.jar;C:\Program Files\BlueJ\lib\junit-jupiter-api-5.5.2.jar;C:\Program Files\BlueJ\lib\junit-jupiter-engine-5.5.2.jar;C:\Program Files\BlueJ\lib\junit-jupiter-migrationsupport-5.5.2.jar;C:\Program Files\BlueJ\lib\junit-jupiter-params-5.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-commons-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-console-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-console-standalone-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-engine-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-launcher-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-reporting-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-runner-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-suite-api-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-platform-testkit-1.5.2.jar;C:\Program Files\BlueJ\lib\junit-quickcheck-core-0.9.jar;C:\Program Files\BlueJ\lib\junit-vintage-engine-5.5.2.jar;C:\Program Files\BlueJ\lib\hamcrest-core-1.3.jar;C:\Program Files\BlueJ\lib\hamcrest-library-1.3.jar;C:\Program Files\BlueJ\lib\lang-stride.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.base.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.controls.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.fxml.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.graphics.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.media.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.properties.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.swing.jar;C:\Program Files\BlueJ\lib\javafx\lib\javafx.web.jar;C:\Users\Usuario\Documents\UMSS\Programacion\TareaTmr\mockito-core-5.7.0.jar;C:\Program Files\BlueJ\lib\userlib\byte-buddy-1.12.16.jar;C:\Program Files\BlueJ\lib\userlib\byte-buddy-agent-1.12.16.jar;C:\Program Files\BlueJ\lib\userlib\mockito-all-1.10.19.jar;C:\Program Files\BlueJ\lib\userlib\mockito-core-4.9.0.jar;C:\Program Files\BlueJ\lib\userlib\mockito-junit-jupiter-4.9.0.jar;C:\Program Files\BlueJ\lib\userlib\objenesis-3.3.jar;C:\Users\Usuario\Documents\UMSS\(C) MyTP\Season4
+-d
+C:\Users\Usuario\Documents\UMSS\(C) MyTP\Season4\doc
+-encoding
+UTF-8
+-charset
+UTF-8
+C:\Users\Usuario\Documents\UMSS\(C) MyTP\Season4\Main.java
+<---- end of javadoc command ---->
+Loading source file C:\Users\Usuario\Documents\UMSS\(C) MyTP\Season4\Main.java...
+Constructing Javadoc information...
+Standard Doclet version 17.0.4+8
+Building tree for all the packages and classes...
+Generating C:\Users\Usuario\Documents\UMSS\(C) MyTP\Season4\doc\Main.html...
+Generating C:\Users\Usuario\Documents\UMSS\(C) MyTP\Season4\doc\package-summary.html...
+Generating C:\Users\Usuario\Documents\UMSS\(C) MyTP\Season4\doc\index.html...

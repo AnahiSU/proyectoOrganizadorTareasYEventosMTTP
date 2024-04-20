@@ -1,0 +1,3 @@
+new tarea|1530|06062024|3|true
+cocinar|1200|22062024|3|true
+comer|1300|15072025|2|true

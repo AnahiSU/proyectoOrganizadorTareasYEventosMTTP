@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Bicola
+comment1.params=
+comment1.target=Bicola()
+comment2.params=data
+comment2.target=Bicola(java.lang.Object)
+comment3.params=
+comment3.target=java.lang.Object\ exitEnd()
+comment4.params=data
+comment4.target=void\ insertFront(java.lang.Object)
+numComments=5

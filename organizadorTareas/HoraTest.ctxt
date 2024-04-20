@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=HoraTest
+comment0.text=\r\n\ La\ clase\ HoraTest\ contiene\ pruebas\ unitarias\ para\ la\ clase\ Hora.\r\n
+comment1.params=
+comment1.target=HoraTest()
+comment1.text=\r\n\ Constructor\ de\ la\ clase\ HoraTest.\r\n
+comment2.params=
+comment2.target=void\ setUp()
+comment2.text=\r\n\ Configuraci\u00F3n\ inicial\ para\ cada\ prueba.\r\n
+comment3.params=
+comment3.target=void\ tearDown()
+comment3.text=\r\n\ Realiza\ la\ limpieza\ posterior\ a\ cada\ prueba.\r\n
+comment4.params=
+comment4.target=void\ toStringTest()
+comment4.text=\r\n\ Prueba\ unitaria\ del\ m\u00E9todo\ toString()\ de\ la\ clase\ Hora.\r\n\ Verifica\ si\ la\ representaci\u00F3n\ en\ cadena\ de\ la\ hora\ es\ correcta.\r\n
+comment5.params=
+comment5.target=void\ toStringSerializadoTest()
+comment5.text=\r\n\ Prueba\ unitaria\ del\ m\u00E9todo\ toStringSerializado()\ de\ la\ clase\ Hora.\r\n\ Verifica\ si\ la\ representaci\u00F3n\ serializada\ de\ la\ hora\ es\ correcta.\r\n
+numComments=6

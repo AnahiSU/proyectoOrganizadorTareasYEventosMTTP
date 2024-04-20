@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=NodeTE
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ NodeTE\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=data
+comment1.target=NodeTE(java.lang.Object)
+comment2.params=
+comment2.target=java.lang.Object\ getData()
+comment3.params=
+comment3.target=NodeTE\ getSuc()
+comment4.params=
+comment4.target=NodeTE\ getAnt()
+comment5.params=
+comment5.target=NodeTE\ getHijo()
+comment6.params=n
+comment6.target=void\ setSuc(NodeTE)
+comment7.params=n
+comment7.target=void\ setAnt(NodeTE)
+comment8.params=n
+comment8.target=void\ setHijo(NodeTE)
+numComments=9

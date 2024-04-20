@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=ArbolTriBP
+comment1.params=
+comment1.target=ArbolTriBP()
+comment2.params=data
+comment2.target=ArbolTriBP(java.lang.Comparable)
+comment3.params=
+comment3.target=boolean\ isEmpty()
+comment4.params=data
+comment4.target=void\ insert(java.lang.Comparable)
+comment5.params=data\ cola
+comment5.target=void\ insert(java.lang.Comparable,\ estDatos.estDatLin.Cola)
+numComments=6

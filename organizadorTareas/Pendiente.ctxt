@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Pendiente
+comment0.text=\r\n\ Clase\ abstracta\ Pendiente\ que\ representa\ una\ tarea\ o\ evento\ pendiente.\r\n
+comment1.params=titulo\ descripcion\ hora\ fecha\ prioridad
+comment1.target=Pendiente(java.lang.String,\ java.lang.String,\ Hora,\ Fecha,\ int)
+comment1.text=\r\n\ Constructor\ de\ la\ clase\ Pendiente.\r\n\ @param\ titulo\ El\ t\u00EDtulo\ del\ pendiente.\r\n\ @param\ descripcion\ La\ descripci\u00F3n\ del\ pendiente.\r\n\ @param\ hora\ La\ hora\ del\ pendiente.\r\n\ @param\ fecha\ La\ fecha\ del\ pendiente.\r\n\ @param\ prioridad\ La\ prioridad\ del\ pendiente.\r\n
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment2.text=\r\n\ M\u00E9todo\ abstracto\ para\ obtener\ una\ representaci\u00F3n\ en\ cadena\ del\ pendiente.\r\n\ @return\ Representaci\u00F3n\ en\ cadena\ del\ pendiente.\r\n
+comment3.params=
+comment3.target=boolean\ seRepite()
+comment3.text=\r\n\ M\u00E9todo\ abstracto\ para\ verificar\ si\ el\ pendiente\ se\ repite.\r\n\ @return\ true\ si\ el\ pendiente\ se\ repite,\ false\ en\ caso\ contrario.\r\n
+numComments=4
