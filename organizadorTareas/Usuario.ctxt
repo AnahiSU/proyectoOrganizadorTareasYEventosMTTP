@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=java.nio.file.Path\ getDirAs()
 comment5.params=
 comment5.target=java.lang.String\ toStringDirAs()
-numComments=6
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

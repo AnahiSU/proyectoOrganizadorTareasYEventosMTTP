@@ -5,25 +5,19 @@ import java.io.IOException;
 import java.io.File;
 
 public class Usuario{
-    private String contraseña;
+    private String contrasena;
     private String nombre;
     private Path dirAs;
     private File file;
 
     public Usuario(String name, String contra){
-        this.contraseña = contra;
+        this.contrasena = contra;
         this.nombre = name;
         this.dirAs = Paths.get("Usuarios", nombre);
-        System.out.println(dirAs);
-        try {
-            Files.createDirectories(dirAs);
-        } catch (IOException e) {
-            System.err.println("Error al crear la carpeta: " + e.getMessage());
-        }
     }
 
     public String getContra(){
-        return contraseña;
+        return contrasena;
     }
 
     public String getNombre(){
@@ -36,5 +30,9 @@ public class Usuario{
     
     public String toStringDirAs(){
         return dirAs.toString();
+    }
+    
+    public String toString(){
+        return nombre+"|"+contrasena;
     }
 }
