@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.regex.*;
 import java.time.LocalDateTime;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * La clase Main es la clase principal que contiene el método main para ejecutar el programa de gestión de tareas y eventos.
@@ -8,12 +10,128 @@ import java.time.LocalDateTime;
 public class Main{
     private final static Scanner entrada = new Scanner(System.in);
     private final static GestorGeneral g = new GestorGeneral();
+    private final static GestorUser gestorUsuarios = new GestorUser();
 
     /**
      * Método principal que inicia el programa de gestión de tareas y eventos.
      * @param args Los argumentos de línea de comandos (no se utilizan en este programa).
      */
     public static void main(String args[]){
+        int opcion = lanzarMenuUsuario();
+        switch(opcion){
+            case 1: iniciarSesion(); break;
+            case 2: registrarUsuario(); main(args); break;
+            case 3: System.out.println("Exito, nos vemos pronto"); System.exit(0); break;
+        }
+    } 
+
+    public static void registrarUsuario(){
+        System.out.println("Por favor, ingrese el nombre de usuario:");
+        String nombreUsuario = entrada.nextLine();
+        boolean segura = false;
+        String contrasenaUsuario;
+         do {
+            System.out.println("Ahora, elija una contraseña segura:");
+            contrasenaUsuario = entrada.nextLine();
+            segura = validarContraSegura(contrasenaUsuario);
+
+            if (!segura) {
+                System.out.println("La contraseña debe contener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una minúscula, un número y un carácter especial.");
+            }
+
+        } while (!segura);
+        if(gestorUsuarios.registrarUsuario(new Usuario(nombreUsuario, contrasenaUsuario))){
+            System.out.println("Usuario creado exitosamente, por favor inicie sesion");
+        }else{
+            System.out.println("Error, el usuario ingresado ya existe, intente de nuevo");
+            registrarUsuario();
+        }
+    }
+    
+    public static boolean validarContraSegura(String contrasena) {
+        // Al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial
+        String pattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(contrasena);
+
+        return m.matches();
+    }
+
+    public static void iniciarSesion() {
+        System.out.println("Por favor, ingrese el nombre de usuario:");
+        String nombreUsuario = entrada.nextLine();
+        System.out.println("Por favor, ingrese la contraseña del usuario:");
+        String contrasenaUsuario = entrada.nextLine();
+
+        Usuario user = gestorUsuarios.buscarUsuario(nombreUsuario, contrasenaUsuario);
+        if (user != null) {
+            String directorioUsuario = "usuarios/" + nombreUsuario;
+            File dir = new File(directorioUsuario);
+
+            if (!dir.exists()) {
+                System.out.println("Error");
+                return;
+            }
+            ProcessBuilder pb = new ProcessBuilder("java", "-cp", ".", "Main");
+            pb.directory(dir);
+            try {
+                Process proceso = pb.start(); // Lanzar el proceso en el nuevo directorio
+            } catch (Exception e){
+                System.err.println("Error al iniciar el proceso en el directorio del usuario: " + e.getMessage());
+            }
+            lanzarMenu();
+        } else {
+            System.out.println("Las credenciales ingresadas son incorrectas, intente de nuevo.");
+            iniciarSesion();
+        }
+    }
+
+    /*
+    public static void iniciarSesion(){
+    System.out.println("Por favor, ingrese el nombre de usuario");
+    String nombreUsuario = entrada.nextLine();
+    System.out.println("Por favor, ingrese la contraseña del usuario");
+    String contraseñaUsuario = entrada.nextLine();
+
+    Usuario user = gestorUsuarios.buscarUsuario(nombreUsuario, contraseñaUsuario);
+    if(user != null){
+    //hacer algo
+    //todo usario 
+
+    }else{
+    System.out.println("Las credenciales ingresadas son incorrectas, intente de nuevo");
+    iniciarSesion();
+    }
+    return null;
+    }
+     */
+
+   
+    public static int lanzarMenuUsuario() {
+        System.out.println("Bienvenido al gestor de Pendientes v2.0");
+        int res = -1;
+        boolean bandera = false;
+        do{
+            mostrarMenuUsuario();
+            String input = entrada.nextLine();
+            if(validarPrioridad(input)){
+                res = Integer.parseInt(input);
+                bandera = true;
+            }else{
+                System.out.println("Por favor ingrese un opcion valida entre 1 y 3");
+            }
+        }while(!bandera);
+        return res;
+    }
+
+    public static void mostrarMenuUsuario(){
+        System.out.println("* Ingrese 1 para iniciar sesion");
+        System.out.println("* Ingrese 2 para registar un nuevo usuario");
+        System.out.println("* Ingrese 3 para cerrar el programa");
+    }
+
+    public static void lanzarMenu(){
         System.out.println("¡Bienvenido a tu gestor de tareas y eventos!");
         boolean banderin = true;
         do{
@@ -37,7 +155,7 @@ public class Main{
                 case 5: banderin = false;System.out.println("¡Éxito! Nos vemos."); break;
             }
         }while(banderin);
-    } 
+    }
 
     private static void buscarPendiente(){
         String tipo;
@@ -222,7 +340,6 @@ public class Main{
         return new Par(first, second);
     }
 
-    
     private static void recibirDatos(String tipo){
         String titulo,descripcion, lugar;
         System.out.println("Por favor, ingrese el título:");
@@ -260,7 +377,7 @@ public class Main{
         prioridad = Integer.parseInt(input);
         return prioridad;
     }
-    
+
     private static Fecha parsearFecha(String cadena){
         String [] split = cadena.split("-");
         int dia = Integer.parseInt(split[0]);
@@ -268,7 +385,7 @@ public class Main{
         int año = Integer.parseInt(split[2]);
         return new Fecha(dia, mes, año);
     }
-    
+
     private static Hora parsearHora(String cadena){
         String split[] = cadena.split(":");
         int hora= Integer.parseInt(split[0]);
