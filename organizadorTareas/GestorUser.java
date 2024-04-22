@@ -57,14 +57,16 @@ public class GestorUser{
     }
 
     public Usuario buscarUsuario(String nombUser, String pass){
+        Usuario us = null;
         for(Usuario usuario : users){
             if(usuario.getNombre().equals(nombUser)){
                 if(usuario.getContra().equals(pass)){
-                    return usuario;
+                    us = usuario;
+                    break;
                 }
             }
         }
-        return null;
+        return us;
     }
 
     public void eliminarUsuario(Usuario usuario) { 
