@@ -16,6 +16,15 @@ public class Escritor {
      */
     public Escritor(String archivo) {
         this.archivo = archivo;
+        // Verificar si el archivo existe, si no existe, crearlo
+        File file = new File(archivo);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                System.err.println("Error al crear el archivo: " + e.getMessage());
+            }
+        }
     }
 
     /**

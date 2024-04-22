@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class Main{
     private final static Scanner entrada = new Scanner(System.in);
-    private final static GestorGeneral g = new GestorGeneral();
+    private static GestorGeneral g;
     private final static GestorUser gestorUsuarios = new GestorUser();
 
     /**
@@ -24,6 +24,10 @@ public class Main{
             case 3: System.out.println("Exito, nos vemos pronto"); System.exit(0); break;
         }
     } 
+    
+    private static void setGestor(Usuario us){
+        g =  new GestorGeneral(us);
+    }
 
     public static void registrarUsuario(){
         System.out.println("Por favor, ingrese el nombre de usuario:");
@@ -66,20 +70,7 @@ public class Main{
 
         Usuario user = gestorUsuarios.buscarUsuario(nombreUsuario, contrasenaUsuario);
         if (user != null) {
-            String directorioUsuario = "usuarios/" + nombreUsuario;
-            File dir = new File(directorioUsuario);
-
-            if (!dir.exists()) {
-                System.out.println("Error");
-                return;
-            }
-            ProcessBuilder pb = new ProcessBuilder("java", "-cp", ".", "Main");
-            pb.directory(dir);
-            try {
-                Process proceso = pb.start(); // Lanzar el proceso en el nuevo directorio
-            } catch (Exception e){
-                System.err.println("Error al iniciar el proceso en el directorio del usuario: " + e.getMessage());
-            }
+            setGestor(user);
             lanzarMenu();
         } else {
             System.out.println("Las credenciales ingresadas son incorrectas, intente de nuevo.");
@@ -132,6 +123,7 @@ public class Main{
     }
 
     public static void lanzarMenu(){
+        
         System.out.println("¡Bienvenido a tu gestor de tareas y eventos!");
         boolean banderin = true;
         do{

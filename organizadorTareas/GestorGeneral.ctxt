@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=GestorGeneral
 comment0.text=\r\n\ La\ clase\ GestorGeneral\ es\ responsable\ de\ gestionar\ eventos\ y\ tareas\ utilizando\ \u00E1rboles\ binarios\ de\ b\u00FAsqueda\ de\ tal\ forma\ que\r\n\ ambos\ son\ ordenados\ por\ el\ atributo\ prioridad.\r\n
-comment1.params=
-comment1.target=GestorGeneral()
+comment1.params=u
+comment1.target=GestorGeneral(Usuario)
 comment1.text=\r\n\ Constructor\ de\ la\ clase\ GestorGeneral.\r\n\ Inicializa\ los\ \u00E1rboles\ binarios\ de\ b\u00FAsqueda\ para\ eventos\ y\ tareas.\r\n
 comment10.params=
 comment10.target=void\ eliminarTodo()

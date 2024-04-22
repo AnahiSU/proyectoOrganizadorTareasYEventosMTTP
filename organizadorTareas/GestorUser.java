@@ -56,7 +56,14 @@ public class GestorUser{
         return flag;
     }
 
-    public Usuario buscarUsuario(String nombUser, String cont){//david
+    public Usuario buscarUsuario(String nombUser, String pass){
+        for(Usuario usuario : users){
+            if(usuario.getNombre().equals(nombUser)){
+                if(usuario.getContra().equals(pass)){
+                    return usuario;
+                }
+            }
+        }
         return null;
     }
 

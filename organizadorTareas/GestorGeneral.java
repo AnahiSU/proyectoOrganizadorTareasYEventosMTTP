@@ -17,12 +17,12 @@ public class GestorGeneral {
      * Constructor de la clase GestorGeneral.
      * Inicializa los árboles binarios de búsqueda para eventos y tareas.
      */
-    public GestorGeneral() {
+    public GestorGeneral(Usuario u) {
         pqEvento = new ArbolBB<>(); // Inicializa el árbol para eventos
         pqTarea = new ArbolBB<>(); // Inicializa el árbol para tareas
 
-        escritorTarea = new Escritor("BaseTareas.txt");
-        escritorEvento = new Escritor("BaseEventos.txt"); // Inicializa el escritor de archivos
+        escritorTarea = new Escritor(u.toStringDirAs() +"\\BaseTareas.txt");
+        escritorEvento = new Escritor(u.toStringDirAs() + "\\BaseEventos.txt"); // Inicializa el escritor de archivos
 
         // Carga datos de archivos
         ArrayList<String[]> datosTar = escritorTarea.leerTodo();
