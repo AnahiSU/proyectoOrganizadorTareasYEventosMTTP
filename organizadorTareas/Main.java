@@ -3,20 +3,13 @@ import java.util.regex.*;
 import java.time.LocalDateTime;
 import java.io.File;
 import java.io.IOException;
-
+//._.
 
 /**
  * La clase Main es la clase principal que contiene el método main para ejecutar el programa de gestión de tareas y eventos.
  */
 
-class Par<T, E>{
-    T first;
-    E second;
-    public Par(T t, E e){
-        first = t;
-        second = e;
-    }
-}
+
 
 public class Main{
     private final static Scanner entrada = new Scanner(System.in);
@@ -137,7 +130,7 @@ public class Main{
                     menu = Integer.parseInt(eventito);
                     evento = false;
                 }else{
-                    System.out.println("Por favor, ingrese una opción válida (1, 2, 3, 4 o 5)");
+                    System.out.println("Por favor, ingrese una opción válida (1, 2, 3, 4, 5 o 6)");
                 }
             }            
             switch(menu){
