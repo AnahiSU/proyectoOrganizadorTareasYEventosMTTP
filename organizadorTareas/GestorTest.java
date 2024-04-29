@@ -19,7 +19,7 @@ public class GestorTest{
         tar2 = new Tarea("Avanzar proyecto", new Hora(17,0),new Fecha(12,10,2024),1);
         ev1 = new Evento("Examen de grafos","", new Hora(9,45), new Fecha(1,4,2024),3,"");
         ev2 = new Evento("Examen de base de datos","", new Hora(8,15), new Fecha(5,4,2024),2,"");
-        gest = new GestorGeneral();
+        gest = new GestorGeneral(null);
         gest.registrarTarea(tar1);
         gest.registrarTarea(tar2);
         gest.registrarEvento(ev1);

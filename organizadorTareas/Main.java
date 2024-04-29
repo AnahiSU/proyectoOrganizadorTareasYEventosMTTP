@@ -4,9 +4,20 @@ import java.time.LocalDateTime;
 import java.io.File;
 import java.io.IOException;
 
+
 /**
  * La clase Main es la clase principal que contiene el método main para ejecutar el programa de gestión de tareas y eventos.
  */
+
+class Par<T, E>{
+    T first;
+    E second;
+    public Par(T t, E e){
+        first = t;
+        second = e;
+    }
+}
+
 public class Main{
     private final static Scanner entrada = new Scanner(System.in);
     private static GestorGeneral g;
@@ -24,19 +35,25 @@ public class Main{
             case 3: System.out.println("Exito, nos vemos pronto"); System.exit(0); break;
         }
     } 
-    
+
     private static void setGestor(Usuario us){
         g =  new GestorGeneral(us);
     }
 
     public static void registrarUsuario(){
-        System.out.println("Por favor, ingrese el nombre de usuario:");
+        System.out.println("Por favor, ingrese el nombre de usuario:\nO ingrese 0 para salir");
         String nombreUsuario = entrada.nextLine();
+        if(nombreUsuario.equals("0")){
+            main(null);
+        }
         boolean segura = false;
         String contrasenaUsuario;
-         do {
-            System.out.println("Ahora, elija una contraseña segura:");
+        do {
+            System.out.println("Ahora, elija una contraseña segura:\nO ingrese 0 para retroceder");
             contrasenaUsuario = entrada.nextLine();
+            if(contrasenaUsuario.equals("0")){
+                main(null);
+            }
             segura = validarContraSegura(contrasenaUsuario);
 
             if (!segura) {
@@ -51,7 +68,7 @@ public class Main{
             registrarUsuario();
         }
     }
-    
+
     public static boolean validarContraSegura(String contrasena) {
         // Al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial
         String pattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
@@ -63,11 +80,16 @@ public class Main{
     }
 
     public static void iniciarSesion() {
-        System.out.println("Por favor, ingrese el nombre de usuario:");
+        System.out.println("Por favor, ingrese el nombre de usuario:\nO ingrese 0 para salir");
         String nombreUsuario = entrada.nextLine();
-        System.out.println("Por favor, ingrese la contraseña del usuario:");
+        if(nombreUsuario.equals("0")){
+            main(null);
+        }
+        System.out.println("Por favor, ingrese la contraseña del usuario:\nO ingrese 0 para salir");
         String contrasenaUsuario = entrada.nextLine();
-
+        if(contrasenaUsuario.equals("0")){
+            main(null);
+        }
         Usuario user = gestorUsuarios.buscarUsuario(nombreUsuario, contrasenaUsuario);
         if (user != null) {
             setGestor(user);
@@ -78,27 +100,6 @@ public class Main{
         }
     }
 
-    /*
-    public static void iniciarSesion(){
-    System.out.println("Por favor, ingrese el nombre de usuario");
-    String nombreUsuario = entrada.nextLine();
-    System.out.println("Por favor, ingrese la contraseña del usuario");
-    String contraseñaUsuario = entrada.nextLine();
-
-    Usuario user = gestorUsuarios.buscarUsuario(nombreUsuario, contraseñaUsuario);
-    if(user != null){
-    //hacer algo
-    //todo usario 
-
-    }else{
-    System.out.println("Las credenciales ingresadas son incorrectas, intente de nuevo");
-    iniciarSesion();
-    }
-    return null;
-    }
-     */
-
-   
     public static int lanzarMenuUsuario() {
         System.out.println("Bienvenido al gestor de Pendientes v2.0");
         int res = -1;
@@ -123,7 +124,7 @@ public class Main{
     }
 
     public static void lanzarMenu(){
-        
+
         System.out.println("¡Bienvenido a tu gestor de tareas y eventos!");
         boolean banderin = true;
         do{
@@ -144,9 +145,18 @@ public class Main{
                 case 2: recibirPendiente(); break;
                 case 3: buscarPendiente(); break;
                 case 4: eliminarPendiente(); break;
-                case 5: banderin = false;System.out.println("¡Éxito! Nos vemos."); break;
+                case 5: cerrarSesion(); break;
+                case 6: banderin = false;System.out.println("¡Éxito! Nos vemos."); break;
             }
         }while(banderin);
+    }
+
+    static void cerrarSesion(){
+        String nomUsuario = g.getNomUs();
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("Adios, "+nomUsuario+" esperamos volver a verte de nuevo en el gestor");
+        System.out.println("---------------------------------------------------------------------");
+        main(null);
     }
 
     private static void buscarPendiente(){
@@ -265,11 +275,12 @@ public class Main{
      * Método para mostrar el menú de opciones al usuario.
      */
     private static void mostrarMenu(){
-        System.out.println("* Ingrese 1 si quiere ver la lista de todos sus pendientes.");
-        System.out.println("* Ingrese 2 si quiere registrar un pendiente.");
-        System.out.println("* Ingrese 3 si quiere buscar un pendiente.");
-        System.out.println("* Ingrese 4 si quiere eliminar un pendiente.");
-        System.out.println("* Ingrese 5 si quiere acabar con el proceso.");
+        System.out.println("* Ingrese 1 para ver la lista de todos sus pendientes.");
+        System.out.println("* Ingrese 2 para registrar un pendiente.");
+        System.out.println("* Ingrese 3 para buscar un pendiente.");
+        System.out.println("* Ingrese 4 para eliminar un pendiente.");
+        System.out.println("* Ingrese 5 para cerrar su sesion");
+        System.out.println("* Ingrese 6 para acabar con el proceso.");
     }
 
     private static boolean validarHora(String cad){

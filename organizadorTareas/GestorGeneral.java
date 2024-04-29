@@ -12,7 +12,7 @@ public class GestorGeneral {
     private Escritor escritorTarea;// Objeto para escribir en archivos
     private Escritor escritorEvento;// Objeto para escribir en archivos
     private boolean flag = true; // Bandera para controlar escritura en archivos
-
+    private Usuario user;
     /**
      * Constructor de la clase GestorGeneral.
      * Inicializa los árboles binarios de búsqueda para eventos y tareas.
@@ -31,6 +31,7 @@ public class GestorGeneral {
         // Registra eventos y tareas desde datos cargados
         registrarBaseEv(datosEv);
         registrarBaseTar(datosTar);
+        user = u;
     }
 
     /**
@@ -310,6 +311,9 @@ public class GestorGeneral {
         }
         return res;
     }
-
+    
+    public String getNomUs(){
+        return user.getNombre();
+    }
 }
 

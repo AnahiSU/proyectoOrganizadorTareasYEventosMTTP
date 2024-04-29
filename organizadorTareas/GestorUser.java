@@ -9,18 +9,18 @@ public class GestorUser{
     private ArrayList<Usuario> users;
     private boolean creado;
     private Escritor escritor;
-    
+
     public GestorUser(){
         users = new ArrayList();
         creado = false;
         escritor = new Escritor("BaseUsuarios.txt");
-        
+
         //gestor lee su base de datos y los usuarios no se pierden
         ArrayList<String[]> base = escritor.leerTodo();
         for(int i = 0; i<base.size();i++){
             String nom = base.get(i)[0];
             String cont = base.get(i)[1];
-            
+
             Usuario us = new Usuario(nom,cont);
 
             creado = true;
@@ -50,7 +50,7 @@ public class GestorUser{
 
     private boolean validarUsuario(Usuario user){
         boolean flag = false;
-        if(buscarUsuario(user.getNombre(),user.getContra()) == null){
+        if(buscarUsuarioNom(user.getNombre()) == null){
             flag = true;
         }
         return flag;
@@ -64,6 +64,18 @@ public class GestorUser{
                     us = usuario;
                     break;
                 }
+            }
+        }
+        return us;
+    }
+
+    public Usuario buscarUsuarioNom(String nombUser){
+        Usuario us = null;
+        for(Usuario usuario : users){
+            if(usuario.getNombre().equals(nombUser)){
+                us = usuario;
+                break;
+
             }
         }
         return us;
