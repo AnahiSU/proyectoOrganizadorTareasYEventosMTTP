@@ -19,6 +19,11 @@ public class Fecha {
         this.a = a;
     }
     
+    //implementacion en clase fecha, implementamos el metodo equals para comparar fechas
+    public boolean equals(Fecha f){
+        return d == f.d && m == f.m && a == f.a;
+    }
+    
     /**
      * Obtiene el día.
      *

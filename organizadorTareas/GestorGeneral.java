@@ -107,11 +107,40 @@ public class GestorGeneral {
      * Método para registrar una nueva tarea en el gestor.
      * @param tarea La tarea a registrar.
      */
+    
     public void registrarTarea(Tarea tarea) {
         pqTarea.insertData(tarea); // Inserta la tarea en el árbol de tareas
         if(flag){
             escritorTarea.escribir(tarea.toString()); // Escribe la tarea en archivo si la bandera lo permite
         }
+    }
+    
+    public boolean validarTarea(Hora h, Fecha f){
+        boolean valida = true;
+        ListaSE<Tarea> lista =  pqTarea.inOrder();
+        for(int i = 0; i < lista.length(); i++){
+            Tarea t = lista.get(i);
+            if(t.getHora().equals(h)){
+               if(t.getFecha().equals(f)){
+                   valida = false;
+                } 
+            }
+        }
+        return valida;
+    }
+    
+       public boolean validarEvento(Hora h, Fecha f){
+        boolean valida = true;
+        ListaSE<Evento> lista =  pqEvento.inOrder();
+        for(int i = 0; i < lista.length(); i++){
+            Evento e = lista.get(i);
+            if(e.getHora().equals(h)){
+               if(e.getFecha().equals(f)){
+                   valida = false;
+                } 
+            }
+        }
+        return valida;
     }
 
     /**

@@ -26,6 +26,16 @@ public class Tarea extends Pendiente implements Comparable<Tarea> {
         super(titulo, "", hora, fecha, prioridad);
     }
 
+    
+    //Implementacion de getHORA Y getFecha para la implementacion de no tener tareas con fechas repetidads
+    public Hora getHora(){
+        return hora;
+    }
+    
+    //lo mismo para fecha
+    public Fecha getFecha(){
+        return fecha;
+    }
     // Métodos de la clase Tarea
 
     /**

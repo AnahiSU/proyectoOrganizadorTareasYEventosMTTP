@@ -22,7 +22,17 @@ public class Evento extends Pendiente implements Comparable<Evento>{
         fechaAc = LocalDate.now(); // Asignación de la fecha actual
         this.lugar = lugar; // Asignación del lugar
     }
-
+    
+    //Implementacion de getHORA Y getFecha para la implementacion de no tener tareas con fechas repetidads
+    public Hora getHora(){
+        return hora;
+    }
+    
+    //lo mismo para fecha
+    public Fecha getFecha(){
+        return fecha;
+    }
+    
     // Métodos de la clase Evento
 
     /**
