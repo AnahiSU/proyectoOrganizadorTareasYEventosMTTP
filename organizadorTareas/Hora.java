@@ -100,4 +100,8 @@ public class Hora {
         }
         return "" + hora + str; // Devuelve la hora y los minutos formateados sin separador
     }
+    
+    public boolean equals(Hora h){
+        return this.hora == h.hora && this.min == h.min;
+    }
 }

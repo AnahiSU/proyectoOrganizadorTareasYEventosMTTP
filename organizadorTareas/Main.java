@@ -237,7 +237,7 @@ public class Main{
     }
 
     private static  boolean validarMenu(String n){
-        String patron = "[1-5]";
+        String patron = "[1-6]";
         Pattern pattern = Pattern.compile(patron);
         Matcher matcher = pattern.matcher(n);
         return matcher.matches();
@@ -304,7 +304,7 @@ public class Main{
         return fechaHoraIngresadas.isAfter(ahora);
     }
 
-    private static Par<Hora, Fecha> recibirTiempo(){
+    private static Par<Hora, Fecha> recibirTiempo(String tipo){
         Par<String, String> res;
         boolean flag =  true;
         String hora, fecha;
@@ -333,6 +333,10 @@ public class Main{
                 flag = false;
             }
         }while(flag);
+        if(!g.validarTiempo(first, second, tipo)){
+            System.out.println("Tienes un pendiente en esa hora.\nIngresa otra fecha y hora.");
+            return recibirTiempo(tipo);
+        }
         return new Par(first, second);
     }
 
@@ -340,7 +344,7 @@ public class Main{
         String titulo,descripcion, lugar;
         System.out.println("Por favor, ingrese el título:");
         titulo = entrada.nextLine();
-        Par<Hora, Fecha> tiempo = recibirTiempo();
+        Par<Hora, Fecha> tiempo = recibirTiempo(tipo);
         int prioridad = recibirPrioridad();
         if(tipo.equals("tarea")){
             Tarea tarea = new Tarea(titulo, tiempo.first, tiempo.second, prioridad);

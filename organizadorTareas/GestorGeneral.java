@@ -115,9 +115,20 @@ public class GestorGeneral {
         }
     }
     
-    public boolean validarTarea(Hora h, Fecha f){
+    public boolean validarTiempo(Hora hora, Fecha fecha, String tipo){
+        boolean res;
+        if(tipo.equals("tarea")){
+            res = validarTarea(hora, fecha);
+        }else{
+            res = validarEvento(hora, fecha);
+        }
+        return res;
+    }
+    
+    private boolean validarTarea(Hora h, Fecha f){
         boolean valida = true;
-        ListaSE<Tarea> lista =  pqTarea.inOrder();
+        ListaSE<Tarea> lista = pqTarea.inOrder();
+        
         for(int i = 0; i < lista.length(); i++){
             Tarea t = lista.get(i);
             if(t.getHora().equals(h)){
@@ -129,7 +140,7 @@ public class GestorGeneral {
         return valida;
     }
     
-       public boolean validarEvento(Hora h, Fecha f){
+    private boolean validarEvento(Hora h, Fecha f){
         boolean valida = true;
         ListaSE<Evento> lista =  pqEvento.inOrder();
         for(int i = 0; i < lista.length(); i++){

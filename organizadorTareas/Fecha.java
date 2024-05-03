@@ -21,7 +21,7 @@ public class Fecha {
     
     //implementacion en clase fecha, implementamos el metodo equals para comparar fechas
     public boolean equals(Fecha f){
-        return d == f.d && m == f.m && a == f.a;
+        return this.d == f.d && this.m == f.m && this.a == f.a;
     }
     
     /**
@@ -89,4 +89,5 @@ public class Fecha {
         // Devuelve la fecha serializada sin separadores
         return dS + mS + a;
     }
-}
+    
+    }
