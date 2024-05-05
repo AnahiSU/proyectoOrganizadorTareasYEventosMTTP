@@ -3,7 +3,7 @@ import Modelo.Escritor;
 import java.util.*;
 import Controlador.estDatos.estDatNoLin.*;
 import Controlador.estDatos.estDatLin.*;
-
+//hola miguel
 /**
  * La clase GestorGeneral es responsable de gestionar eventos y tareas utilizando árboles binarios de búsqueda de tal forma que
  * ambos son ordenados por el atributo prioridad.
