@@ -3,7 +3,7 @@ import Modelo.Escritor;
 import java.util.*;
 import Controlador.estDatos.estDatNoLin.*;
 import Controlador.estDatos.estDatLin.*;
-//hola miguel 123
+
 /**
  * La clase GestorGeneral es responsable de gestionar eventos y tareas utilizando árboles binarios de búsqueda de tal forma que
  * ambos son ordenados por el atributo prioridad.
@@ -129,8 +129,8 @@ public class GestorGeneral {
     2. No encontré el pendiente
     3. Encontrado y modificado
      */
-    public byte modificarFecha(Fecha f, String titulo, byte tipo){
-        byte res = 3;
+    public int modificarFecha(Fecha f, String titulo, int tipo){
+        int res = 3;
 
         if(tipo == 1){
             Tarea tar = buscarTareaObjeto(titulo);
@@ -178,8 +178,8 @@ public class GestorGeneral {
     2. No encontré el pendiente
     3. Encontrado y modificado
      */
-    public byte modificarHora(Hora h, String titulo, byte tipo){
-        byte res = 3;
+    public int modificarHora(Hora h, String titulo, int tipo){
+        int res = 3;
         if(tipo == 1){
             Tarea tar = buscarTareaObjeto(titulo);
             if(tar == null){
@@ -220,7 +220,7 @@ public class GestorGeneral {
         return res;
     }
 
-    public boolean modificarTitulo(String t, String titulo, byte tipo){
+    public boolean modificarTitulo(String t, String titulo, int tipo){
         boolean res = false;
         if(tipo == 1){
             Tarea tar =  buscarTareaObjeto(titulo);
@@ -252,7 +252,7 @@ public class GestorGeneral {
         return res;
     }
 
-    public boolean modificarPrioridad(int p, String titulo, byte tipo){
+    public boolean modificarPrioridad(int p, String titulo, int tipo){
         boolean res = false;
         if(tipo == 1){
             Tarea tar =  buscarTareaObjeto(titulo);

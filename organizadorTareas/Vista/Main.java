@@ -1,5 +1,5 @@
 package Vista;
-//mi primer intento otra vez
+
 import java.util.Scanner;
 import java.util.regex.*;
 import java.time.LocalDateTime;
@@ -12,8 +12,6 @@ import Controlador.estDatos.estDatLin.*;
 /**
  * La clase Main es la clase principal que contiene el método main para ejecutar el programa de gestión de tareas y eventos.
  */
-
-
 
 public class Main{
     private final static Scanner entrada = new Scanner(System.in);
@@ -134,7 +132,7 @@ public class Main{
                     menu = Integer.parseInt(eventito);
                     evento = false;
                 }else{
-                    System.out.println("Por favor, ingrese una opción válida (1, 2, 3, 4, 5 o 6)");
+                    System.out.println("Por favor, ingrese una opción válida (1, 2, 3, 4, 5, 6 o 7)");
                 }
             }            
             switch(menu){
@@ -142,10 +140,354 @@ public class Main{
                 case 2: recibirPendiente(); break;
                 case 3: buscarPendiente(); break;
                 case 4: eliminarPendiente(); break;
-                case 5: cerrarSesion(); break;
-                case 6: banderin = false;System.out.println("¡Éxito! Nos vemos."); break;
+                case 5: modificarPendiente(); break;
+                case 6: cerrarSesion(); break;
+                case 7: banderin = false;System.out.println("¡Éxito! Nos vemos."); break;
             }
         }while(banderin);
+    }
+
+    static void modificarPendiente(){
+        boolean bandera = true;
+        do{
+            System.out.println("Desea modificar una tarea o evento?\nO ingrese 0 para volver atras");
+            String input = entrada.nextLine();
+            if(input.equals("tarea")){
+                bandera = false;
+                int opcion = lanzarMenuModificacionTarea();
+                switch(opcion){
+                    case 0: lanzarMenu(); break;
+                    case 1: modificarTitulo(1); break;
+                    case 2: modificarPrioridad(1); break;
+                    case 3: modificarHora(1); break;
+                    case 4: modificarFecha(1);break;
+                }
+            }else if(input.equals("evento")){
+                bandera = false;
+                int opcion = lanzarMenuModificacionEvento();
+                switch(opcion){
+                    case 0: lanzarMenu(); break;
+                    case 1: modificarTitulo(2); break;
+                    case 2: modificarPrioridad(2); break;
+                    case 3: modificarHora(2); break;
+                    case 4: modificarFecha(2); break;
+                    case 5: modificarDescripcion();break;
+                }
+            }else if(input.equals("0")){
+                bandera = false;
+                lanzarMenu();
+            }else{
+                System.out.println("Ingrese una opcion correcta por favor");
+            }
+        }while(bandera);
+    }
+
+    static void modificarDescripcion(){
+        boolean bandera = true;
+        do{
+            System.out.println("Ingrese el titulo del evento a modificar\nO ingrese 0 para volver atras");
+            String titulo = entrada.nextLine();
+            if(titulo.equals("0")){
+                modificarPendiente();
+            }else{
+                System.out.println("Ingrese la nueva descripcion para ese titulo");
+                String input = entrada.nextLine();
+                if(g.modificarDescripcion(input, titulo)){
+                    bandera = false;
+                    System.out.println("Logramos modificar su evento con exito");
+                }else{
+                    System.out.println("No encontramos el evento con el titulo proporcionado, intente de nuevo por favor");
+                }
+            }
+        }while(bandera);
+    }
+
+    static void modificarFecha(int tipo){
+        if(tipo == 1){
+            System.out.println("Por favor ingrese el titulo de su Tarea\nO ingrese 0 para volver atras");
+            String titulo = entrada.nextLine();
+            if(titulo.equals("0")){
+                modificarPendiente();
+                return;
+            }
+            System.out.println("Por favor, ingrese la fecha, usando el siguiente formato dd-mm-aaaa\nO ingrese 0 para volver atras");
+            String fecha;
+            do{
+                fecha = entrada.nextLine();
+                if(fecha.equals("0")){
+                    modificarPendiente();
+                    return;
+                }
+                if(!validarFecha(fecha)){
+                    System.out.println("La fecha ingresada no tiene el formato correcto indicado (dd-mm-aaaa), vuelva a ingresarla por favor\nO ingrese 0 para volver atras");
+                }
+            }while(!validarFecha(fecha));
+            Fecha f = parsearFecha(fecha);
+            int estado = g.modificarFecha(f, titulo, tipo);
+            if(estado == 1){
+                System.out.println("No logramos modificar la fecha de tu tarea porque aun tienes algo pendiente justo a esa fecha y hora :)\nCambialo a otra fecha");
+                modificarHora(tipo);
+            }else if(estado == 2){
+                System.out.println("No logramos encontrar la tarea con el titulo proporcionado\nIntenta de nuevo por favor");
+                modificarHora(tipo);
+            }else{
+                System.out.println("Logramos modificar la fecha de su tarea con exito");
+            }
+        }else{
+            System.out.println("Por favor ingrese el titulo de su Evento\nO ingrese 0 para volver atras");
+            String titulo = entrada.nextLine();
+            if(titulo.equals("0")){
+                modificarPendiente();
+                return;
+            }
+            System.out.println("Por favor, ingrese la fecha, usando el siguiente formato dd-mm-aaaa\nO ingrese 0 para volver atras");
+            String fecha;
+            do{
+                fecha = entrada.nextLine();
+                if(fecha.equals("0")){
+                    modificarPendiente();
+                    return;
+                }
+                if(!validarFecha(fecha)){
+                    System.out.println("La fecha ingresada no tiene el formato correcto indicado (dd-mm-aaaa), vuelva a ingresarla por favor\nO ingrese 0 para volver atras");
+                }
+            }while(!validarFecha(fecha));
+            Fecha f = parsearFecha(fecha);
+            int estado = g.modificarFecha(f, titulo, tipo);
+            if(estado == 1){
+                System.out.println("No logramos modificar la fecha de tu Evento porque aun tienes algo pendiente justo a esa fecha y hora :)\nCambialo a otra fecha");
+                modificarHora(tipo);
+            }else if(estado == 2){
+                System.out.println("No logramos encontrar el evento con el titulo proporcionado\nIntenta de nuevo por favor");
+                modificarHora(tipo);
+            }else{
+                System.out.println("Logramos modificar la fecha de su evento con exito");
+            }
+        }
+    }
+
+    static void modificarHora(int tipo){
+        if(tipo == 1){
+            System.out.println("Por favor ingrese el titulo de su Tarea\nO ingrese 0 para volver atras");
+            String titulo = entrada.nextLine();
+            if(titulo.equals("0")){
+                modificarPendiente();
+                return;
+            }
+            System.out.println("Por favor, ingrese la hora, usando el siguiente formato (horas:minutos)\nO ingrese 0 para volver atras");
+            String hora;
+            do{
+                hora = entrada.nextLine();
+                if(hora.equals("0")){
+                    modificarPendiente();
+                    return;
+                }
+                if(!validarHora(hora)){
+                    System.out.println("La hora ingresada no tiene el formato correcto indicado (horas:minutos), vuelva a ingresarla por favor\n O ingrese 0 para volver atras");
+                }
+            }while(!validarHora(hora));
+            Hora h = parsearHora(hora);
+            int estado = g.modificarHora(h, titulo, tipo);
+            if(estado == 1){
+                System.out.println("No logramos modificar la hora de tu tarea porque aun tienes algo pendiente a esa hora :)\n Cambialo a otra hora");
+                modificarHora(tipo);
+            }else if(estado == 2){
+                System.out.println("No logramos encontrar la tarea con el titulo proporcionado\nIntenta de nuevo por favor");
+                modificarHora(tipo);
+            }else{
+                System.out.println("Logramos modificar la hora de su tarea con exito");
+            }
+        }else{
+            System.out.println("Por favor ingrese el titulo de su Evento\nO ingrese 0 para volver atras");
+            String titulo = entrada.nextLine();
+            if(titulo.equals("0")){
+                modificarPendiente();
+                return;
+            }
+            System.out.println("Por favor, ingrese la hora, usando el siguiente formato (horas:minutos)\nO ingrese 0 para volver atras");
+            String hora;
+            do{
+                hora = entrada.nextLine();
+                if(hora.equals("0")){
+                    modificarPendiente();
+                    return;
+                }
+                if(!validarHora(hora)){
+                    System.out.println("La hora ingresada no tiene el formato correcto indicado (horas:minutos), vuelva a ingresarla por favor\n O ingrese 0 para volver atras");
+                }
+            }while(!validarHora(hora));
+            Hora h = parsearHora(hora);
+            int estado = g.modificarHora(h, titulo, tipo);
+            if(estado == 1){
+                System.out.println("No logramos modificar la hora de tu evento porque aun tienes algo pendiente a esa hora :)\nCambialo a otra hora");
+                modificarHora(tipo);
+            }else if(estado == 2){
+                System.out.println("No logramos encontrar el evento con el titulo proporcionado\nIntenta de nuevo por favor");
+                modificarHora(tipo);
+            }else{
+                System.out.println("Logramos modificar la hora de su evento con exito");
+            }
+        }
+    }
+
+    static void modificarPrioridad(int tipo){
+        boolean bandera = true;
+        if(tipo == 1){
+            do{
+                System.out.println("Ingrese el titulo de su tarea para modificar su prioridad\nO ingrese 0 para volver atras");
+                String titulo = entrada.nextLine();
+                if(titulo.equals("0")){
+                    modificarPendiente();
+                }else{
+                    System.out.println("Ingrese la nueva prioridad por favor\nO ingrese 0 para volver atras");
+                    String input = entrada.nextLine();
+                    if(input.equals("0")){
+                        modificarPendiente();
+                        break;
+                    }
+                    if(validarPrioridad(input)){
+                        if(g.modificarPrioridad(Integer.parseInt(input), titulo, tipo)){
+                            System.out.println("No logramos encontrar su tarea, por favor intente de nuevo");
+                        }else{
+                            System.out.println("Su tarea fue modificada con exito");
+                            bandera = false;
+                        }
+                    }else{
+                        System.out.println("La nueva prioridad ingresada no se encuentra en el rango [1, 3], intente de nuevo por favor");
+                    }
+                }
+            }while(bandera);
+        }else{
+            //Evento
+            do{
+                System.out.println("Ingrese el titulo de su evento para modificar su prioridad\nOingrese 0 para volver atras");
+                String titulo = entrada.nextLine();
+                if(titulo.equals("0")){
+                    modificarPendiente();
+                }else{
+                    System.out.println("Ingrese la nueva prioridad por favor\nO ingrese 0 para volver atras");
+                    String input = entrada.nextLine();
+                    if(input.equals("0")){
+                        modificarPendiente();
+                        break;
+                    }
+                    if(validarPrioridad(input)){
+                        if(g.modificarPrioridad(Integer.parseInt(input), titulo, tipo)){
+                            System.out.println("Su evento fue modificada con exito");
+                            bandera = false;
+                        }else{
+                            System.out.println("No logramos encontrar su evento, por favor intente de nuevo");
+                        }
+                    }else{
+                        System.out.println("La nueva prioridad ingresada no se encuentra en el rango [1, 3], intente de nuevo por favor");
+                    }
+                }
+            }while(bandera);
+        }
+    }    
+
+    static void modificarTitulo(int tipo){
+        boolean bandera = true;
+        if(tipo == 1){
+            //tarea
+            do{
+                System.out.println("Ingrese el titulo a modificar de su Tarea por favor\nOIngrese 0 para volver atras");
+                String input = entrada.nextLine();
+                if(input.equals("0")){
+                    modificarPendiente();
+                    break;
+                }
+                System.out.println("Ingrese el nuevo titulo de su Tarea por favor\nO ingrese 0 para volver atras");
+                String nuevo = entrada.nextLine();
+                if(nuevo.equals("0")){
+                    bandera = false;
+                    modificarPendiente();
+                    break;
+                }else if(g.modificarTitulo(nuevo,input, tipo)){
+                    System.out.println("Exito, modificamos el titulo de su tarea");  
+                    bandera = false;
+                }else{
+                    System.out.println("No logramos encontrar la tarea con el titulo proporcionado, intente de nuevo por favor");
+                }
+            }while(bandera);       
+        }else{
+            //evento
+            do{
+                System.out.println("Ingrese el titulo a modificar de su Evento por favor\nO ingrese 0 para volver atras");
+                String input = entrada.nextLine();
+                if(input.equals("0")){
+                    modificarPendiente();
+                    break;
+                }
+                System.out.println("Ingrese el nuevo titulo de su Evento por favor\nO ingrese 0 para volver atras");
+                String nuevo = entrada.nextLine();
+                if(nuevo.equals("0")){
+                    bandera = false;
+                    modificarPendiente();
+                    break;
+                }else if(g.modificarTitulo(nuevo,input, tipo)){
+                    System.out.println("Exito, modificamos el titulo de su evento");  
+                    bandera = false;
+                }else{
+                    System.out.println("No logramos encontrar el evento con el titulo proporcionado, intente de nuevo por favor");
+                }
+            }while(bandera); 
+        }
+    }
+
+    static int lanzarMenuModificacionTarea(){
+        boolean bandera = true;
+        int res = 0;
+        do{
+            System.out.println("Ingrese 0 para volver atras");
+            System.out.println("Ingrese 1 para modificar el titulo de su Tarea");
+            System.out.println("Ingrese 2 para modificar la prioridad de su Tarea");
+            System.out.println("Ingrese 3 para modificar la Fecha de su tarea");
+            System.out.println("Ingrese 4 para modificar la Hora de su Tarea");
+            String input = entrada.nextLine();
+            if(validarMenuTarea(input)){
+                bandera = false;
+                res = Integer.parseInt(input);
+            }else{
+                System.out.println("Ingrese una opcion valida a elegir por favor");
+            }
+        }while(bandera);
+        return res;
+    }
+
+    static int lanzarMenuModificacionEvento(){
+        boolean bandera = true;
+        int res = 0;
+        do{
+            System.out.println("Ingrese 0 para volver atras");
+            System.out.println("Ingrese 1 para modificar el titulo de su Evento");
+            System.out.println("Ingrese 2 para modificar la prioridad de su Evento");
+            System.out.println("Ingrese 3 para modificar la Fecha de su Evento");
+            System.out.println("Ingrese 4 para modificar la Hora de su Evento");
+            System.out.println("Ingrese 5 para modificar la descripcion de su Evento");
+            String input = entrada.nextLine();
+            if(validarMenuEvento(input)){
+                bandera = false;
+                res = Integer.parseInt(input);
+            }else{
+                System.out.println("Ingrese una opcion valida a elegir por favor");
+            }
+        }while(bandera);
+        return res;
+    }
+
+    private static  boolean validarMenuTarea(String n){
+        String patron = "[0-4]";
+        Pattern pattern = Pattern.compile(patron);
+        Matcher matcher = pattern.matcher(n);
+        return matcher.matches();
+    }
+
+    private static  boolean validarMenuEvento(String n){
+        String patron = "[0-5]";
+        Pattern pattern = Pattern.compile(patron);
+        Matcher matcher = pattern.matcher(n);
+        return matcher.matches();
     }
 
     static void cerrarSesion(){
@@ -241,7 +583,7 @@ public class Main{
     }
 
     private static  boolean validarMenu(String n){
-        String patron = "[1-6]";
+        String patron = "[1-7]";
         Pattern pattern = Pattern.compile(patron);
         Matcher matcher = pattern.matcher(n);
         return matcher.matches();
@@ -276,8 +618,9 @@ public class Main{
         System.out.println("* Ingrese 2 para registrar un pendiente.");
         System.out.println("* Ingrese 3 para buscar un pendiente.");
         System.out.println("* Ingrese 4 para eliminar un pendiente.");
-        System.out.println("* Ingrese 5 para cerrar su sesion");
-        System.out.println("* Ingrese 6 para acabar con el proceso.");
+        System.out.println("* Ingrese 5 para modificar un pendiente");
+        System.out.println("* Ingrese 6 para cerrar su sesion");
+        System.out.println("* Ingrese 7 para acabar con el proceso.");
     }
 
     private static boolean validarHora(String cad){
